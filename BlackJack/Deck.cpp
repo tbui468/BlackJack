@@ -21,7 +21,9 @@ Deck::Deck(int decks) {
 }
 
 void Deck::shuffle() {
-	std::shuffle(deck.begin(), deck.end(), std::default_random_engine());
+	std::default_random_engine engine;
+	engine.seed(std::chrono::system_clock::now().time_since_epoch().count());
+	std::shuffle(deck.begin(), deck.end(), engine);
 }
 
 //draws card from end of vector

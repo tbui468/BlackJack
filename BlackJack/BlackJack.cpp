@@ -11,7 +11,14 @@
 
 int main()
 {
-	Round round;
+	std::cout << "Welcome to BlackJack!" << std::endl;
+	int play;
+	do {
+		Round round;
+		std::cout << "1. Play   2. Quit    > " << std::endl;
+		std::cin >> play;
+	}
+	while (play == 1);
 
 }
 
