@@ -14,6 +14,7 @@ int main()
 	std::cout << "Welcome to BlackJack!" << std::endl;
 	int play;
 	do {
+		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
 		Round round;
 		std::cout << "1. Play   2. Quit    > " << std::endl;
 		std::cin >> play;

@@ -18,7 +18,6 @@ public:
 	Deck get_deck();
 	House get_house();
 	void display_cards();
-	bool has_blackjack(Player player);
-	bool has_blackjack(House house);
+	bool is_blackjack(Hand hand);
 };
 

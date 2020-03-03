@@ -2,45 +2,62 @@
 
 Round::Round() : deck(deck_number), player(deck), house(deck) {
 	int choice;
-	display_cards();
+	
 
-	while (!player.get_hand().bust())
-	{
-		std::cout << "1. Hit  2. Stand" << std::endl;
-		std::cout << "Enter choice > " << std::flush;
-		std::cin >> choice;
-		std::cout << std::endl << std::endl;
-		if (choice == 1) {
-			player.hit(deck);
-			display_cards();
-		}
-		else {
-			break;
-		}
-	}
-	if (player.get_hand().bust()) {
-		std::cout << "You lost!" << std::endl;
-	}else{
-		while (house.get_hand().calculate_hand() < 17) {
-			house.hit(deck);
-		}
-		//check if player or house won
+	if (is_blackjack(player.get_hand()) && is_blackjack(house.get_hand())) {
 		round_end = true;
 		display_cards();
-		
-		if (house.get_hand().bust()) {
-			std::cout << "You won!" << std::endl;
-		}else if (house.get_hand().calculate_hand() > player.get_hand().calculate_hand()) {
+		std::cout << "It's a tie!" << std::endl;
+	}else if (is_blackjack(player.get_hand())) {
+		round_end = true;
+		display_cards();
+		std::cout << "You won!" << std::endl;
+	}else if (is_blackjack(house.get_hand())) {
+		round_end = true;
+		display_cards();
+		std::cout << "You lost!" << std::endl;
+	}
+	else {
+		display_cards();
+		while (!player.get_hand().bust())
+		{
+			std::cout << "1. Hit  2. Stand" << std::endl;
+			std::cout << "Enter choice > " << std::flush;
+			std::cin >> choice;
+			std::cout << std::endl << std::endl;
+			if (choice == 1) {
+				player.hit(deck);
+				display_cards();
+			}
+			else {
+				break;
+			}
+		}
+		if (player.get_hand().bust()) {
 			std::cout << "You lost!" << std::endl;
 		}
-		else if (house.get_hand().calculate_hand() < player.get_hand().calculate_hand()) {
-			std::cout << "You won!" << std::endl;
-		}
 		else {
-			std::cout << "It's a tie!" << std::endl;
+			while (house.get_hand().calculate_hand() < 17) {
+				house.hit(deck);
+			}
+			//check if player or house won
+			round_end = true;
+			display_cards();
+
+			if (house.get_hand().bust()) {
+				std::cout << "You won!" << std::endl;
+			}
+			else if (house.get_hand().calculate_hand() > player.get_hand().calculate_hand()) {
+				std::cout << "You lost!" << std::endl;
+			}
+			else if (house.get_hand().calculate_hand() < player.get_hand().calculate_hand()) {
+				std::cout << "You won!" << std::endl;
+			}
+			else {
+				std::cout << "It's a tie!" << std::endl;
+			}
 		}
 	}
-
 }
 
 Deck Round::get_deck() {
@@ -83,10 +100,15 @@ void Round::display_cards() {
 	std::cout << deck.size() << std::endl;
 }
 
-bool Round::has_blackjack(Player player) {
-	return true;
-}
 
-bool Round::has_blackjack(House house) {
-	return true;
+
+bool Round::is_blackjack(Hand hand) {
+	if (hand.size() > 2) return false;
+	std::vector<std::string> c = hand.get_cards();
+	std::string a = c[0];
+	std::string b = c[1];
+	if (a == "A" && (b == "10" || b == "J" || b == "Q" || b == "K"))
+		return true;
+	if (b == "A" && (a == "10" || a == "J" || a == "Q" || a == "K"))
+		return true;
 }
