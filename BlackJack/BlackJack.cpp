@@ -25,6 +25,8 @@ int main()
 	std::cout << std::endl << deck3.size();
 	std::cout << std::endl << deck4.size();
 
+	std::cout << "Hello World!" << std::endl;
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
