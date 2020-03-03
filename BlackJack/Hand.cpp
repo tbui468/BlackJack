@@ -60,3 +60,7 @@ int Hand::get_value(std::string card, int sum) {
 bool Hand::bust() {
 	return (this->calculate_hand() > 21);
 }
+
+int Hand::size() {
+	return cards.size();
+}

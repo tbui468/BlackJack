@@ -66,9 +66,6 @@ TEST_F(HandTest, CalculateFaceTest) {
     EXPECT_EQ(true, hand4_.bust());
 }
 
-TEST_F(HandTest, SortHand) {
-
-}
 
 //method needs to add number/face cards before considering Aces!!!
 TEST_F(HandTest, CalculateAceTest) {
@@ -109,12 +106,27 @@ TEST_F(DeckTest, EmptyDeck) {
 
 
 //testing next_move in House class
-class HouseTesting : public ::testing::Test {
+class HouseTest : public ::testing::Test {
 public:
-    HouseTesting() : deck1_(1), deck2_(1), house1_(deck1_), house2_(deck2_) {};
+    HouseTest() : deck1_(1), deck2_(2), house1_(deck1_), house2_(deck2_) {
+        house2_.hit(deck2_);
+    };
 protected:
+    Deck deck1_; //default 2 cards
+    Deck deck2_; //draw one extra
     House house1_;
     House house2_;
-    Deck deck1_;
-    Deck deck2_;
 };
+
+TEST_F(HouseTest, DrawCards) {
+    EXPECT_EQ(2, house1_.get_hand().size()); 
+    EXPECT_EQ(50, deck1_.size());
+    EXPECT_EQ(3, house2_.get_hand().size());
+    EXPECT_EQ(101, deck2_.size());
+}
+
+TEST_F(HouseTest, StandHit) {
+
+}
+
+//Testing Round class

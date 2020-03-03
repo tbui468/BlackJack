@@ -13,5 +13,6 @@ public:
 	void stand();
 	void hit(Deck &deck);
 	House::Action next_move();
+	Hand get_hand();
 };
 

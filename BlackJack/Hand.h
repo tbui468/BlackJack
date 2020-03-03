@@ -16,6 +16,7 @@ public:
 	void remove_card(std::string card);
 	int calculate_hand();
 	bool bust();
+	int size();
 };
 
 

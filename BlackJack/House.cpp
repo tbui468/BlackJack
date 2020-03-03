@@ -3,8 +3,8 @@
 #include "House.h"
 
 House::House(Deck &deck) {
-	hand.add_card(deck.draw_card());
-	hand.add_card(deck.draw_card());
+	hit(deck);
+	hit(deck);
 }
 
 void House::stand() {
@@ -21,4 +21,8 @@ House::Action House::next_move() {
 		return House::Action::HIT;
 	else
 		return House::Action::STAND;
+}
+
+Hand House::get_hand() {
+	return hand;
 }
