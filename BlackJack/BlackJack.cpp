@@ -11,21 +11,7 @@
 
 int main()
 {
-	Deck deck1(1);
-	Deck deck2(2);
-	Deck deck3(3);
-	Deck deck4(4);
-
-	while (deck1.size() > 0) {
-		std::cout << deck1.draw_card() << std::flush;
-	}
-
-	std::cout << std::endl << deck1.size();
-	std::cout << std::endl << deck2.size();
-	std::cout << std::endl << deck3.size();
-	std::cout << std::endl << deck4.size();
-
-	std::cout << "Hello World!" << std::endl;
+	Round round;
 
 }
 

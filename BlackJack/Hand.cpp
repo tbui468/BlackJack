@@ -64,3 +64,7 @@ bool Hand::bust() {
 int Hand::size() {
 	return cards.size();
 }
+
+std::vector<std::string> Hand::get_cards() {
+	return cards;
+}

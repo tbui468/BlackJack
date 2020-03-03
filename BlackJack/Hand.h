@@ -17,6 +17,7 @@ public:
 	int calculate_hand();
 	bool bust();
 	int size();
+	std::vector<std::string> get_cards();
 };
 
 
