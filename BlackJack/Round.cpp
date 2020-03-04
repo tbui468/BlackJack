@@ -1,18 +1,24 @@
 #include "Round.h"
 
 Round::Round() : deck(deck_number), player(deck), house(deck) {
-	int choice;
-	
 
-	if (is_blackjack(player.get_hand()) && is_blackjack(house.get_hand())) {
+}
+
+void Round::start_round() {
+	int choice;
+
+
+	if (has_blackjack(player.get_hand()) && has_blackjack(house.get_hand())) {
 		round_end = true;
 		display_cards();
 		std::cout << "It's a tie!" << std::endl;
-	}else if (is_blackjack(player.get_hand())) {
+	}
+	else if (has_blackjack(player.get_hand())) {
 		round_end = true;
 		display_cards();
 		std::cout << "You won!" << std::endl;
-	}else if (is_blackjack(house.get_hand())) {
+	}
+	else if (has_blackjack(house.get_hand())) {
 		round_end = true;
 		display_cards();
 		std::cout << "You lost!" << std::endl;
@@ -99,7 +105,7 @@ void Round::display_cards() {
 
 
 
-bool Round::is_blackjack(Hand hand) {
+bool Round::has_blackjack(Hand hand) {
 	if (hand.size() > 2) return false;
 	std::vector<std::string> c = hand.get_cards();
 	std::string a = c[0];
@@ -108,4 +114,5 @@ bool Round::is_blackjack(Hand hand) {
 		return true;
 	if (b == "A" && (a == "10" || a == "J" || a == "Q" || a == "K"))
 		return true;
+	return false;
 }

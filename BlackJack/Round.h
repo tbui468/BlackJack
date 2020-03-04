@@ -14,8 +14,9 @@ private:
 	Player house;
 public:
 	Round();
+	void start_round();
 	Deck get_deck();
 	void display_cards();
-	bool is_blackjack(Hand hand);
+	bool has_blackjack(Hand hand);
 };
 
