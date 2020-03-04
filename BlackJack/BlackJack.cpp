@@ -15,6 +15,8 @@ int main()
 	int play;
 	do {
 		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
 		Round round;
 		std::cout << "1. Play   2. Quit    > " << std::endl;
 		std::cin >> play;
