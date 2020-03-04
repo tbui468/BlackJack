@@ -7,12 +7,16 @@ class Player
 {
 private:
 	Hand hand;
-	bool current_turn = true;
+	int money = 0;
+	int bet = 0;
+	std::string name = "Player";
 public:
 	Player(Deck &deck);
 	void hit(Deck &deck);
 	void stand();
 	void double_down(Deck &deck);
 	Hand get_hand();
+	void set_name(std::string name);
+	std::string get_name();
 };
 

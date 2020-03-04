@@ -12,11 +12,17 @@ private:
 	Deck deck;
 	Player player;
 	Player house;
+	static const std::string lost_message;
+	static const std::string won_message;
+	static const std::string tied_message;
+	static const std::string blackjack_message;
+
 public:
 	Round();
-	void start_round();
+	void start_round(); //returns amount of player winnings
 	Deck get_deck();
 	void display_cards();
+	void display_player_cards(Player player, bool hide_card);
 	bool has_blackjack(Hand hand);
 };
 

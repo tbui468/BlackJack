@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include "Game.h"
+#include "Game.h" //loads player profile (name, money, games won/lost, 
 #include "Hand.h"
 #include "Deck.h"
 #include "Player.h"
