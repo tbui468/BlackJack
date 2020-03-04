@@ -5,7 +5,6 @@
 #include "Game.h"
 #include "Hand.h"
 #include "Deck.h"
-#include "House.h"
 #include "Player.h"
 #include "Round.h"
 
@@ -14,6 +13,8 @@ int main()
 	std::cout << "Welcome to BlackJack!" << std::endl;
 	int play;
 	do {
+		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
 		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
 		Round round;
 		std::cout << "1. Play   2. Quit    > " << std::endl;

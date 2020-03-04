@@ -7,10 +7,12 @@ class Player
 {
 private:
 	Hand hand;
-	enum class Action { HIT, STAND };
+	bool current_turn = true;
 public:
 	Player(Deck &deck);
 	void hit(Deck &deck);
+	void stand();
+	void double_down(Deck &deck);
 	Hand get_hand();
 };
 

@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "Deck.h"
-#include "House.h"
 #include "Player.h"
 
 class Round
@@ -12,11 +11,10 @@ private:
 	bool round_end = false;
 	Deck deck;
 	Player player;
-	House house;
+	Player house;
 public:
 	Round();
 	Deck get_deck();
-	House get_house();
 	void display_cards();
 	bool is_blackjack(Hand hand);
 };
