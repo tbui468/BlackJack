@@ -13,7 +13,7 @@ private:
 public:
 	Hand();
 	void add_card(std::string new_card);
-	void remove_card(std::string card);
+	void remove_card(std::string card); //needed to implement 'split' blackjack option
 	int calculate_hand();
 	bool bust();
 	int size();
