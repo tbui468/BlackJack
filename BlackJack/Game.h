@@ -13,5 +13,6 @@ private:
 	Player house;
 public:
 	Game();
+	void start_game();
 };
 

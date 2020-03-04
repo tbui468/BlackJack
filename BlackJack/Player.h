@@ -18,5 +18,9 @@ public:
 	Hand get_hand();
 	void set_name(std::string name);
 	std::string get_name();
+	int get_money();
+	void set_money(int money);
+	int get_bet();
+	void set_bet(int bet);
 };
 

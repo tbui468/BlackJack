@@ -10,18 +10,9 @@
 
 int main()
 {
-	std::cout << "Welcome to BlackJack!" << std::endl;
-	int play;
-	do {
-		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
-		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
-		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
-		Round round;
-		round.start_round();
-		std::cout << "1. Play   2. Quit    > " << std::endl;
-		std::cin >> play;
-	}
-	while (play == 1);
+
+	Game game;
+	game.start_game();
 
 }
 

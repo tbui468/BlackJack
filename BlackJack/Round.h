@@ -18,7 +18,7 @@ private:
 	static const std::string blackjack_message;
 
 public:
-	Round();
+	Round(Deck &deck, Player &player, Player &house);
 	void start_round(); //returns amount of player winnings
 	Deck get_deck();
 	void display_cards();

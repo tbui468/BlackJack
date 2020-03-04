@@ -29,3 +29,19 @@ void Player::set_name(std::string name) {
 std::string Player::get_name() {
 	return name;
 }
+
+void Player::set_money(int money) {
+	this->money = money;
+}
+
+int Player::get_money() {
+	return money;
+}
+
+void Player::set_bet(int bet) {
+	this->bet = bet;
+}
+
+int Player::get_bet() {
+	return bet;
+}

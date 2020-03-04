@@ -5,8 +5,8 @@ const std::string Round::won_message = "You won!";
 const std::string Round::tied_message = "You tied!";
 const std::string Round::blackjack_message = "Blackjack!";
 
-Round::Round() : deck(deck_number), player(deck), house(deck) {
-	house.set_name("House");
+Round::Round(Deck &deck, Player &player, Player &house ): deck(deck), player(player), house(house) {
+
 }
 
 void Round::start_round() {
