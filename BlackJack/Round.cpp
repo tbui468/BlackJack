@@ -64,9 +64,6 @@ Deck Round::get_deck() {
 	return deck;
 }
 
-House Round::get_house() {
-	return house;
-}
 
 void Round::display_cards() {
 	//player goes first

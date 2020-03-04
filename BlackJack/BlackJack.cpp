@@ -5,7 +5,6 @@
 #include "Game.h"
 #include "Hand.h"
 #include "Deck.h"
-#include "House.h"
 #include "Player.h"
 #include "Round.h"
 

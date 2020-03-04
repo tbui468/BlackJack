@@ -2,7 +2,6 @@
 #include "../BlackJack/Game.cpp"
 #include "../BlackJack/Hand.cpp" //this also includes the header
 #include "../BlackJack/Deck.cpp"
-#include "../BlackJack/House.cpp"
 #include "../BlackJack/Player.cpp"
 #include "../BlackJack/Round.cpp"
 
@@ -122,8 +121,8 @@ namespace {
     protected:
         Deck deck1_; //default 2 cards
         Deck deck2_; //draw one extra
-        House house1_;
-        House house2_;
+        Player house1_;
+        Player house2_;
     };
 
     TEST_F(HouseTest, DrawCards) {
