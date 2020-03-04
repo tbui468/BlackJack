@@ -14,11 +14,21 @@ void Game::start_game() {
 	int play;
 	do {
 		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+
+		deck.initialize_deck();
+		player.clear_hand();
+		house.clear_hand();
+		player.hit(deck);
+		house.hit(deck);
+		player.hit(deck);
+		house.hit(deck);
 		
 		Round round(deck, player, house);
 		//need to remove cards from player and house, and remake a new deck!!!!!!!!!!!!!
 		round.start_round();
-		std::cout << deck.size();
+		
+
+
 		std::cout << "1. Play   2. Quit    > " << std::endl;
 		std::cin >> play;
 	} while (play == 1);

@@ -68,3 +68,7 @@ int Hand::size() {
 std::vector<std::string> Hand::get_cards() {
 	return cards;
 }
+
+void Hand::clear_hand() {
+	cards.clear();
+}

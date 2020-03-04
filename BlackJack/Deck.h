@@ -15,5 +15,6 @@ public:
 	void shuffle();
 	std::string draw_card();
 	int size();
+	void initialize_deck();
 };
 

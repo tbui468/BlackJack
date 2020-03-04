@@ -18,7 +18,7 @@ void Player::double_down(Deck& deck) {
 	hand.add_card(deck.draw_card());
 }
 
-Hand Player::get_hand() {
+Hand& Player::get_hand() {
 	return hand;
 }
 
@@ -44,4 +44,8 @@ void Player::set_bet(int bet) {
 
 int Player::get_bet() {
 	return bet;
+}
+
+void Player::clear_hand() {
+	get_hand().clear_hand();
 }

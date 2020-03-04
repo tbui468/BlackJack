@@ -18,6 +18,7 @@ public:
 	bool bust();
 	int size();
 	std::vector<std::string> get_cards();
+	void clear_hand();
 };
 
 
