@@ -9,7 +9,6 @@
 #include "Round.h"
 
 //Features I want to add
-//betting
 //saving profile and loading profile
 //display ASCII cards:
 //**********  **********
