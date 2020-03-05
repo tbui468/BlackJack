@@ -9,19 +9,21 @@ Round::Round(Deck &deck, Player &player, Player &house ): deck(deck), player(pla
 
 }
 
-void Round::start_round() {
+int Round::start_round(int bet) {
 	int choice;
 
 	bool player_blackjack = has_blackjack(player.get_hand());
 	bool house_blackjack = has_blackjack(house.get_hand());
 
+
 	//checks for blackjacks after dealing
 	if (player_blackjack || house_blackjack) {
 		round_end = true;
 		display_cards();
-		if (player_blackjack && !house_blackjack) std::cout << won_message << std::endl;
-		else if (!player_blackjack && house_blackjack) std::cout << lost_message << std::endl;
-		else std::cout << tied_message << std::endl;
+		std::cout << blackjack_message << std::endl;
+		if (player_blackjack && !house_blackjack) return won(bet);
+		else if (!player_blackjack && house_blackjack) return lost(bet);
+		else return tied(bet);
 	}
 	else {
 		//player turn
@@ -33,12 +35,13 @@ void Round::start_round() {
 			std::cout << std::endl;
 			std::cout << "Enter choice > " << std::flush;
 			std::cin >> choice;
-			std::cout << std::endl << std::endl;
+			std::cout << std::endl;
 			if (choice == 1) { //hit
 				player.hit(deck);
 				display_cards();
 			}
 			else if (player.get_hand().size() == 2 && choice == 3) { //double down
+				bet = (bet * 2);
 				player.hit(deck);
 				display_cards();
 				break;
@@ -48,7 +51,7 @@ void Round::start_round() {
 			}
 		}
 		if (player.get_hand().bust()) {
-			std::cout << lost_message << std::endl;
+			return lost(bet);
 		}
 		else {
 			while (house.get_hand().calculate_hand() < 17) {
@@ -62,16 +65,16 @@ void Round::start_round() {
 			int player_score = player.get_hand().calculate_hand();
 
 			if (house.get_hand().bust()) {
-				std::cout << won_message << std::endl;
+				return won(bet);
 			}
 			else if (house_score > player_score) {
-				std::cout << lost_message << std::endl;
+				return lost(bet);
 			}
 			else if (house_score < player_score) {
-				std::cout << won_message << std::endl;
+				return won(bet);
 			}
 			else {
-				std::cout << tied_message << std::endl;
+				return tied(bet);
 			}
 		}
 	}
@@ -126,4 +129,19 @@ bool Round::has_blackjack(Hand hand) {
 	if (b == "A" && (a == "10" || a == "J" || a == "Q" || a == "K"))
 		return true;
 	return false;
+}
+
+int Round::won(int bet) {
+	std::cout << won_message << std::endl;
+	return (bet);
+}
+
+int Round::lost(int bet) {
+	std::cout << lost_message << std::endl;
+	return (-1*bet);
+}
+
+int Round::tied(int bet) {
+	std::cout << tied_message << std::endl;
+	return 0;
 }

@@ -13,7 +13,7 @@ void Game::start_game() {
 	std::cout << "Welcome to BlackJack!" << std::endl;
 	int play;
 	do {
-		std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+		std::cout << std::endl;
 
 		deck.initialize_deck();
 		player.clear_hand();
@@ -24,10 +24,19 @@ void Game::start_game() {
 		house.hit(deck);
 		
 		Round round(deck, player, house);
-		//need to remove cards from player and house, and remake a new deck!!!!!!!!!!!!!
-		round.start_round();
-		
 
+		//make bet here
+		int bet;
+		std::cout << "Money remaining: " << player.get_money() << std::endl;
+		std::cout << "Make bet ($1 - $5) > ";
+		std::cin >> bet;
+		if (bet < 1) bet = 1;
+		if (bet > 5) bet = 5;
+		std::cout << std::endl << std::endl;
+		int winnings = round.start_round(bet);
+		int money = player.get_money();
+		player.set_money(money + winnings);
+		std::cout << "Money remaining: " << player.get_money() << std::endl << std::endl;
 
 		std::cout << "1. Play   2. Quit    > ";
 		std::cin >> play;

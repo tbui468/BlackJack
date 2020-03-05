@@ -19,10 +19,13 @@ private:
 
 public:
 	Round(Deck &deck, Player &player, Player &house);
-	void start_round(); //returns amount of player winnings
+	int start_round(int bet); //returns amount of player winnings
 	Deck get_deck();
 	void display_cards();
 	void display_player_cards(Player player, bool hide_card);
 	bool has_blackjack(Hand hand);
+	int won(int bet);
+	int lost(int bet);
+	int tied(int bet);
 };
 

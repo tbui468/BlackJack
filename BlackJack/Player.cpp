@@ -38,13 +38,6 @@ int Player::get_money() {
 	return money;
 }
 
-void Player::set_bet(int bet) {
-	this->bet = bet;
-}
-
-int Player::get_bet() {
-	return bet;
-}
 
 void Player::clear_hand() {
 	get_hand().clear_hand();

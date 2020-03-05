@@ -8,7 +8,6 @@ class Player
 private:
 	Hand hand;
 	int money = 0;
-	int bet = 0;
 	std::string name = "Player";
 public:
 	Player(Deck &deck);
@@ -20,8 +19,6 @@ public:
 	std::string get_name();
 	int get_money();
 	void set_money(int money);
-	int get_bet();
-	void set_bet(int bet);
 	void clear_hand();
 };
 
