@@ -29,7 +29,7 @@ void Game::start_game() {
 		
 
 
-		std::cout << "1. Play   2. Quit    > " << std::endl;
+		std::cout << "1. Play   2. Quit    > ";
 		std::cin >> play;
 	} while (play == 1);
 

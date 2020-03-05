@@ -98,14 +98,16 @@ void Round::display_player_cards(Player player, bool hide_card) {
 
 
 void Round::display_cards() {
-	//player goes first
-	display_player_cards(player, false);
 
-	std::cout << std::endl;
 
 	//House goes second
 	//will only display one card during player turn
 	display_player_cards(house, !round_end);
+
+	std::cout << std::endl;
+
+	//player goes first
+	display_player_cards(player, false);
 
 	std::cout << std::endl;
 

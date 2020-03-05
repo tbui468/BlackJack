@@ -8,6 +8,18 @@
 #include "Player.h"
 #include "Round.h"
 
+//Features I want to add
+//betting
+//saving profile and loading profile
+//display ASCII cards:
+//**********  **********
+//* A    A *  * 4    4 *
+//*        *  *        *
+//*        *  *        *
+//*        *  *        *
+//* A    A *  * 4    4 *
+//**********  **********
+
 int main()
 {
 
