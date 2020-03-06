@@ -1,7 +1,9 @@
 #pragma once
+#include <fstream> // to read and write to text files
 #include "Deck.h"
 #include "Player.h"
 #include "Round.h"
+
 
 
 class Game
