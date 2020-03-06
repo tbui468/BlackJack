@@ -4,6 +4,7 @@ Hand::Hand(){
 }
 
 //puts all Aces at end of cards<std::string> so calculate_hand() works properly
+/*
 void Hand::sort_hand() {
 	int aces = 0;
 	//delete all aces
@@ -20,16 +21,34 @@ void Hand::sort_hand() {
 		--aces;
 	}
 
-}
+}*/
 
 //calculate sum of all cards in hand
 //J,Q,K = 10.  A = 1 or 11, to get as close to 21 as possible, without exceeding 21
 //sort array so that all aces are in the end of cards[]
 int Hand::calculate_hand() {
-	sort_hand();
+	//make copy of 'cards' and sort
+	std::vector<std::string> temp_cards(cards);
+	int aces = 0;
+	//delete all aces
+	for (unsigned int i = 0; i < temp_cards.size(); ++i) {
+		if (temp_cards[i] == "A") {
+			aces += 1;
+			temp_cards.erase(temp_cards.begin() + i);
+			--i;
+		}
+	}
+	//add aces to back of vector
+	while (aces > 0) {
+		temp_cards.push_back("A");
+		--aces;
+	}
+
+
+
 	int sum = 0;
-	for (unsigned int i = 0; i < cards.size(); ++i) {
-		sum += get_value(cards[i], sum);
+	for (unsigned int i = 0; i < temp_cards.size(); ++i) {
+		sum += get_value(temp_cards[i], sum);
 	}
 	return sum;
 }

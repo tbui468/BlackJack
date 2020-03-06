@@ -9,7 +9,7 @@ class Hand {
 private:
 	std::vector<std::string> cards;
 	int get_value(std::string card, int sum);
-	void sort_hand();
+	//void sort_hand();
 public:
 	Hand();
 	void add_card(std::string new_card);
