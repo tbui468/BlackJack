@@ -1,4 +1,6 @@
+#include <sstream>
 #include "Round.h"
+
 
 const std::string Round::lost_message = "You lost!";
 const std::string Round::won_message = "You won!";
@@ -6,6 +8,13 @@ const std::string Round::tied_message = "You tied!";
 const std::string Round::blackjack_message = "Blackjack!";
 
 Round::Round(Deck &deck, Player &player, Player &house ): deck(deck), player(player), house(house) {
+	card_back.push_back("**********");
+	card_back.push_back("* ****** *");
+	card_back.push_back("* ****** *");
+	card_back.push_back("* ****** *");
+	card_back.push_back("* ****** *");
+	card_back.push_back("* ****** *");
+	card_back.push_back("**********");
 
 }
 
@@ -14,6 +23,8 @@ int Round::start_round(int bet) {
 
 	bool player_blackjack = has_blackjack(player.get_hand());
 	bool house_blackjack = has_blackjack(house.get_hand());
+
+	//print_card(card_back);
 
 
 	//checks for blackjacks after dealing
@@ -43,7 +54,7 @@ int Round::start_round(int bet) {
 			else if (player.get_hand().size() == 2 && choice == 3) { //double down
 				bet = (bet * 2);
 				player.hit(deck);
-				display_cards();
+				if(player.get_hand().bust()) display_cards();
 				break;
 			}
 			else { //stand
@@ -56,7 +67,9 @@ int Round::start_round(int bet) {
 		else {
 			while (house.get_hand().calculate_hand() < 17) {
 				house.hit(deck);
+				std::cout << "House draws a card" << std::endl;
 			}
+			std::cout << std::endl;
 			//check if player or house won
 			round_end = true;
 			display_cards();
@@ -87,16 +100,9 @@ Deck Round::get_deck() {
 
 void Round::display_player_cards(Player player, bool hide_card) {
 	std::cout << player.get_name() << " cards" << std::endl;
-	std::cout << "**********" << std::endl;
-	Hand player_hand = player.get_hand();
-	std::vector<std::string> player_cards = player_hand.get_cards();
-	for (unsigned int i = 0; i < player_cards.size(); ++i) {
-		if (i == 1 && hide_card) {
-			std::cout << "?" << std::endl;
-			break;
-		}
-		std::cout << player_cards[i] << std::endl;
-	}
+	std::cout << std::endl;
+
+	print_cards(player.get_hand(), hide_card);
 }
 
 
@@ -106,14 +112,12 @@ void Round::display_cards() {
 	//House goes second
 	//will only display one card during player turn
 	display_player_cards(house, !round_end);
-
 	std::cout << std::endl;
 
 	//player goes first
 	display_player_cards(player, false);
-
+	
 	std::cout << std::endl;
-
 
 }
 
@@ -144,4 +148,63 @@ int Round::lost(int bet) {
 int Round::tied(int bet) {
 	std::cout << tied_message << std::endl;
 	return 0;
+}
+
+
+
+void Round::print_cards(Hand hand, bool hide_card) {
+	pic cards;
+	//makes ASCII card pictures from Hand hand and concatenates horizontally
+	for (unsigned int row = 0; row < 7; ++row) {
+		std::stringstream ss;
+		for (unsigned int i = 0; i < hand.get_cards().size(); ++i) {
+			std::string value = (hand.get_cards())[i];
+			switch (row) {
+			case 0:
+				ss << " ********** ";
+				break;
+			case 1:
+				ss << " * ";
+				if (hide_card && i == 1) ss << "******";
+				else if (value == "10") ss << "10  10";
+				else ss << value << "    " << value;
+				ss << " * ";
+				break;
+			case 2:
+				if (hide_card && i == 1) ss << " * ****** * ";
+				else ss << " *        * ";
+				break;
+			case 3:
+				if (hide_card && i == 1) ss << " * ****** * ";
+				else ss << " *        * ";
+				break;
+			case 4:
+				if (hide_card && i == 1) ss << " * ****** * ";
+				else ss << " *        * ";
+				break;
+			case 5:
+				ss << " * ";
+				if (hide_card && i == 1) ss << "******";
+				else if (value == "10") ss << "10  10";
+				else ss << value << "    " << value;
+				ss << " * ";
+				break;
+			case 6:
+				ss << " ********** ";
+				break;
+			default:
+				break;
+			}
+
+		}
+		cards.push_back(ss.str());
+	}
+
+	print_pic(cards);
+}
+
+void Round::print_pic(pic pic) {
+	for (unsigned int i = 0; i < pic.size(); ++i) {
+		std::cout << pic[i] << std::endl;
+	}
 }

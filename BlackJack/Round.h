@@ -3,6 +3,8 @@
 #include "Deck.h"
 #include "Player.h"
 
+typedef std::vector<std::string> pic;
+
 class Round
 {
 private:
@@ -16,6 +18,9 @@ private:
 	static const std::string won_message;
 	static const std::string tied_message;
 	static const std::string blackjack_message;
+	pic card_back;
+	pic card_front;
+	void print_pic(pic pic);
 
 public:
 	Round(Deck &deck, Player &player, Player &house);
@@ -27,5 +32,6 @@ public:
 	int won(int bet);
 	int lost(int bet);
 	int tied(int bet);
+	void print_cards(Hand hand, bool hide_card);
 };
 

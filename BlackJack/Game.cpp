@@ -32,7 +32,7 @@ void Game::start_game() {
 		std::cin >> bet;
 		if (bet < 1) bet = 1;
 		if (bet > 5) bet = 5;
-		std::cout << std::endl << std::endl;
+		std::cout << std::endl;
 		int winnings = round.start_round(bet);
 		int money = player.get_money();
 		player.set_money(money + winnings);
