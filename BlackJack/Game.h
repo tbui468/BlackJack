@@ -9,7 +9,7 @@
 class Game
 {
 private:
-	static const int deck_number = 1;
+	static const int DECK_NUMBER = 1;
 	Deck deck;
 	Player player;
 	Player house;
